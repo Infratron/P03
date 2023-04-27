@@ -32,5 +32,25 @@ Route::get('/chi-siamo', function () {
 // rotta parametrica
 
 Route::get('/chi-siamo/utenti/dettaglio/{id}', function($id){
+// recupero l'user che ha scelto l'utente
+$utenti = 
+    [
+    ['id'=> 1, 'name'=> 'Mario', 'surname'=>'Rossi', 'age'=> 25, 'materia' => 'CSS'],
+    ['id'=> 2, 'name'=> 'Filippo', 'surname'=>'Tedeshi', 'age'=> 42, 'materia' => 'Javascript'],
+    ['id'=> 3, 'name'=> 'Manuel', 'surname'=>'Genovesi', 'age'=> 30, 'materia' => 'HTML'],
+    ['id'=> 4, 'name'=> 'Sara', 'surname'=>'Pileio', 'age'=> 27, 'materia' => 'Laravel'],  
+    ];
+
+    foreach($utenti as $utente){
+
+        if($id == $utente['id']){
+            return view('dettaglio-utente', ['utente' => $utente]);
+        }
+
+    };
 
 })->name('dettaglio-utente');
+
+Route::get('/dettagli-utente', function () {
+    return view('dettaglio-utente');
+})->name('dettagli.utente');

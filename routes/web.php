@@ -18,5 +18,19 @@ Route::get('/', function () {
 })->name('Homepage');
 
 Route::get('/chi-siamo', function () {
-    return view('chisiamo');
+    $utenti = 
+    [
+    ['id'=> 1, 'name'=> 'Mario', 'surname'=>'Rossi', 'age'=> 25],
+    ['id'=> 2, 'name'=> 'Filippo', 'surname'=>'Tedeshi', 'age'=> 42],
+    ['id'=> 3, 'name'=> 'Manuel', 'surname'=>'Genovesi', 'age'=> 30],
+    ['id'=> 4, 'name'=> 'Sara', 'surname'=>'Pileio', 'age'=> 27],  
+    ];
+
+    return view('chisiamo', ['users' => $utenti]);
 })->name('chi.siamo');
+
+// rotta parametrica
+
+Route::get('/chi-siamo/utenti/dettaglio/{id}', function($id){
+
+})->name('dettaglio-utente');
